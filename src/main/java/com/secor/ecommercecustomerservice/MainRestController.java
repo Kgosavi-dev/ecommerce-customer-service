@@ -15,25 +15,25 @@ public class MainRestController {
 
 
     @Autowired
-    UserDetailRepository userDetailRepository;
+    CustomerDetailRepository customerDetailRepository;
 
     @Autowired
     AuthService authService;
 
-    @PostMapping("update/user/details")
-    public ResponseEntity<?> updateUserDetails(@RequestBody UserDetail userDetail,
+    @PostMapping("update/customer/details")
+    public ResponseEntity<?> updateCustomerDetails(@RequestBody CustomerDetail customerDetail,
                                                @RequestHeader("Authorization") String token)
     {
-        log.info("Received request to update user details: {}", userDetail);
+        log.info("Received request to update customer details: {}", customerDetail);
         if(!authService.validateToken(token))
         {
             log.info("Invalid token: {}", token);
             return ResponseEntity.badRequest().body("Invalid token");
         }
         log.info("Token is valid: {}", token);
-        log.info("Updating user details: {}", userDetail);
-        userDetailRepository.save(userDetail);
-        return ResponseEntity.ok(userDetail);
+        log.info("Updating customer details: {}", customerDetail);
+        customerDetailRepository.save(customerDetail);
+        return ResponseEntity.ok(customerDetail);
     }
 
 

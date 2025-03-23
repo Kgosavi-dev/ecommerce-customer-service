@@ -13,6 +13,7 @@ public class AppConfig {
     {
         return webClientBuilder
                 .baseUrl("http://localhost:8082/api/v1/validate")
+//                .baseUrl("http://localhost:8072/ecommerce-auth-service/api/v1/validate")
                 .filter(new LoggingWebClientFilter())
                 .build();
     }
